@@ -77,16 +77,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "TWYN Events Agency — From Concept to Experience" },
+      {
+        name: "description",
+        content:
+          "TWYN is a Lisbon-based events production agency. Fun, flexible, solution-driven — just great events, done right.",
+      },
+      { name: "author", content: "TWYN Events Agency" },
+      { property: "og:title", content: "TWYN Events Agency" },
+      {
+        property: "og:description",
+        content: "From concept to experience. Events production based in Lisbon.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300..700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,

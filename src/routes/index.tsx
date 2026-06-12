@@ -15,6 +15,7 @@ import bamboo from "@/assets/bamboo.jpg.asset.json";
 import catering from "@/assets/catering.jpg.asset.json";
 import networking from "@/assets/networking.jpg.asset.json";
 import signArrow from "@/assets/sign-arrow.jpg.asset.json";
+import heroVideo from "@/assets/hero.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -226,8 +227,16 @@ function Index() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-16 sm:mt-24 relative"
           >
-            <div className="relative rounded-[2rem] overflow-hidden aspect-[16/8] shadow-2xl">
-              <img src={heroTable.url} alt="A long event table set with flowers, place settings and food" className="w-full h-full object-cover" />
+            <div className="relative rounded-[2rem] overflow-hidden aspect-[16/8] shadow-2xl bg-muted">
+              <video
+                src={heroVideo.url}
+                poster={heroTable.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -top-6 -left-2 sm:left-8 rotate-[-6deg] bg-lime px-4 py-2 rounded-full text-sm font-medium shadow-lg">
               ✿ great events, done right

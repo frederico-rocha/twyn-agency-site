@@ -15,6 +15,7 @@ import bamboo from "@/assets/bamboo.jpg.asset.json";
 import catering from "@/assets/catering.jpg.asset.json";
 import networking from "@/assets/networking.jpg.asset.json";
 import signArrow from "@/assets/sign-arrow.jpg.asset.json";
+import heroVideo from "@/assets/hero.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({

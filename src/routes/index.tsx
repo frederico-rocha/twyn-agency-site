@@ -171,7 +171,7 @@ function Index() {
             Let's talk
           </a>
         </nav>
-      </motion.header>
+      </header>
 
 
       {/* HERO */}

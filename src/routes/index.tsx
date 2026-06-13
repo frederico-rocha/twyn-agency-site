@@ -146,14 +146,12 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
-      <motion.header
-        animate={{
-          backgroundColor: scrolled ? "hsl(var(--background) / 0.85)" : "hsl(var(--background) / 0)",
-          borderColor: scrolled ? "hsl(var(--border) / 0.5)" : "hsl(var(--border) / 0)",
-          backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
-        }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="fixed top-0 inset-x-0 z-50 border-b"
+      <header
+        className={`fixed top-0 inset-x-0 z-50 border-b transition-all duration-500 ease-out ${
+          scrolled
+            ? "backdrop-blur-md bg-background/85 border-border/50"
+            : "bg-transparent border-transparent backdrop-blur-0"
+        }`}
       >
         <nav className={`mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
           <a href="#top" className="flex items-center gap-2.5">

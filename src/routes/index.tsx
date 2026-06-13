@@ -175,21 +175,19 @@ function Index() {
 
 
       {/* HERO */}
-      <section id="top" className="relative min-h-[100dvh] overflow-hidden">
-        {/* Video background */}
-        <div className="absolute inset-0 z-0 bg-black">
-          <video
-            src={heroVideo.url}
-            poster={heroTable.url}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-contain sm:object-cover"
-          />
-          {/* Bottom gradient for smooth transition into next section */}
-          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
-        </div>
+      <section id="top" className="relative overflow-hidden bg-black sm:min-h-[100dvh]">
+        {/* Video — fits full width on mobile (no crop), covers section on desktop */}
+        <video
+          src={heroVideo.url}
+          poster={heroTable.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="block w-full h-auto sm:absolute sm:inset-0 sm:h-full sm:object-cover"
+        />
+        {/* Bottom gradient for smooth transition into next section */}
+        <div className="pointer-events-none absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* MANIFESTO */}

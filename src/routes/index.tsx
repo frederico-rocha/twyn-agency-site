@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Squiggle, Star, ArrowDoodle } from "@/components/twyn/Squiggle";
+import { useState, useEffect } from "react";
 
 import logo from "@/assets/twyn-logo.png.asset.json";
 import heroTable from "@/assets/hero-table.jpg.asset.json";
@@ -133,11 +134,26 @@ const marqueeItems = [
 ];
 
 function Index() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <header
+        className={`fixed top-0 inset-x-0 z-50 border-b transition-all duration-500 ease-out ${
+          scrolled
+            ? "backdrop-blur-md bg-background/85 border-border/50"
+            : "bg-transparent border-transparent backdrop-blur-0"
+        }`}
+      >
+        <nav className={`mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
           <a href="#top" className="flex items-center gap-2.5">
             <img src={logo.url} alt="TWYN Events Agency" className="h-10 w-10 rounded-full" />
             <span className="font-display text-xl tracking-tight font-semibold">TWYN</span>
@@ -150,15 +166,16 @@ function Index() {
           </div>
           <a
             href="#contact"
-            className="rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:bg-primary transition"
+            className={`rounded-full px-5 py-2 text-sm font-medium transition ${scrolled ? "bg-foreground text-background hover:bg-primary" : "bg-lime text-ink hover:bg-lime-deep"}`}
           >
             Let's talk
           </a>
         </nav>
       </header>
 
+
       {/* HERO */}
-      <section id="top" className="relative min-h-[90vh] flex items-end pb-16 sm:pb-24 overflow-hidden">
+      <section id="top" className="relative min-h-screen overflow-hidden">
         {/* Video background */}
         <div className="absolute inset-0 z-0">
           <video
@@ -170,64 +187,8 @@ function Index() {
             playsInline
             className="w-full h-full object-cover"
           />
-          {/* Dark overlay for text legibility */}
-          <div className="absolute inset-0 bg-black/50" />
-          {/* Bottom gradient for smooth transition */}
-          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-8 pt-32">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-sm sm:text-base uppercase tracking-[0.25em] text-white/70 flex items-center gap-3"
-          >
-            <Star className="w-4 h-4 text-lime" />
-            Events Production Agency · Lisbon
-          </motion.p>
-
-          <h1 className="font-display mt-6 text-[clamp(3rem,11vw,10rem)] leading-[0.95] tracking-[-0.03em] font-light text-white">
-            <motion.span
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="block"
-            >
-              From <em className="italic font-medium text-lime">concept</em>
-            </motion.span>
-            <motion.span
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.15 }}
-              className="block"
-            >
-              to experience.
-              <span className="inline-block align-middle ml-2 sm:ml-4">
-                <Squiggle className="inline-block w-32 sm:w-56 text-lime" />
-              </span>
-            </motion.span>
-          </h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-10 grid sm:grid-cols-2 gap-8 max-w-3xl"
-          >
-            <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
-              Tell us what you need. We're a fun, flexible, solution-driven crew that turns complex briefs into stress-free events.
-            </p>
-            <div className="flex flex-wrap gap-3 items-start">
-              <a href="#work" className="rounded-full bg-lime px-6 py-3 text-sm font-medium text-ink hover:bg-lime-deep transition">
-                See our work →
-              </a>
-              <a href="#contact" className="rounded-full border-2 border-white/60 text-white px-6 py-3 text-sm font-medium hover:bg-white hover:text-ink transition">
-                Start a project
-              </a>
-            </div>
-          </motion.div>
+          {/* Bottom gradient for smooth transition into next section */}
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
         </div>
       </section>
 

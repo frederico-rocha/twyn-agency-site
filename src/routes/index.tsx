@@ -184,9 +184,19 @@ function Index() {
             muted
             loop
             playsInline
-            className="absolute inset-0 h-full w-full object-fill sm:object-cover"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-lg sm:hidden"
           />
-          <div className="pointer-events-none absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
+          <video
+            src={heroVideo.url}
+            poster={heroTable.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 z-10 h-full w-full object-contain sm:object-cover"
+          />
+          <div className="pointer-events-none absolute bottom-0 inset-x-0 z-20 h-40 bg-gradient-to-t from-background to-transparent" />
         </div>
       </section>
 

@@ -175,9 +175,9 @@ function Index() {
 
 
       {/* HERO */}
-      <section id="top" className="relative min-h-screen overflow-hidden">
+      <section id="top" className="relative min-h-[100dvh] overflow-hidden">
         {/* Video background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-black">
           <video
             src={heroVideo.url}
             poster={heroTable.url}
@@ -185,7 +185,7 @@ function Index() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain sm:object-cover"
           />
           {/* Bottom gradient for smooth transition into next section */}
           <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />

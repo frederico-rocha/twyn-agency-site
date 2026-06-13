@@ -134,11 +134,28 @@ const marqueeItems = [
 ];
 
 function Index() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <motion.header
+        animate={{
+          backgroundColor: scrolled ? "hsl(var(--background) / 0.85)" : "hsl(var(--background) / 0)",
+          borderColor: scrolled ? "hsl(var(--border) / 0.5)" : "hsl(var(--border) / 0)",
+          backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
+        }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="fixed top-0 inset-x-0 z-50 border-b"
+      >
+        <nav className={`mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
           <a href="#top" className="flex items-center gap-2.5">
             <img src={logo.url} alt="TWYN Events Agency" className="h-10 w-10 rounded-full" />
             <span className="font-display text-xl tracking-tight font-semibold">TWYN</span>
@@ -151,12 +168,13 @@ function Index() {
           </div>
           <a
             href="#contact"
-            className="rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:bg-primary transition"
+            className={`rounded-full px-5 py-2 text-sm font-medium transition ${scrolled ? "bg-foreground text-background hover:bg-primary" : "bg-lime text-ink hover:bg-lime-deep"}`}
           >
             Let's talk
           </a>
         </nav>
-      </header>
+      </motion.header>
+
 
       {/* HERO */}
       <section id="top" className="relative min-h-[90vh] flex items-end pb-16 sm:pb-24 overflow-hidden">

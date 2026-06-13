@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Squiggle, Star, ArrowDoodle } from "@/components/twyn/Squiggle";
+import { useState, useEffect } from "react";
 
 import logo from "@/assets/twyn-logo.png.asset.json";
 import heroTable from "@/assets/hero-table.jpg.asset.json";

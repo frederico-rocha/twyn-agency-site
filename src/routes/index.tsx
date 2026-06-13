@@ -176,26 +176,18 @@ function Index() {
 
       {/* HERO */}
       <section id="top" className="relative min-h-[100dvh] overflow-hidden bg-black">
-        <video
-          src={heroVideo.url}
-          poster={heroTable.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full scale-110 object-cover opacity-55 blur-xl sm:hidden"
-        />
-        <video
-          src={heroVideo.url}
-          poster={heroTable.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-contain sm:object-cover"
-        />
-        <div className="pointer-events-none absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-[18px] overflow-hidden rounded-[1.75rem] sm:inset-0 sm:rounded-none">
+          <video
+            src={heroVideo.url}
+            poster={heroTable.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-fill sm:object-cover"
+          />
+          <div className="pointer-events-none absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        </div>
       </section>
 
       {/* MANIFESTO */}

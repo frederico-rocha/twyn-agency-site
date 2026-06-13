@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Squiggle, Star, ArrowDoodle } from "@/components/twyn/Squiggle";
 import { useState, useEffect } from "react";
 
